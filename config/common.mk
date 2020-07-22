@@ -152,9 +152,9 @@ endif
 include vendor/pa/config/qcom_utils.mk
 $(call inherit-product-if-exists, device/qcom/common/common.mk)
 
-# Ramdisk
-$(foreach f,$(wildcard vendor/pa/prebuilt/etc/init/*.rc),\
-    $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $f)))
+# Init
+PRODUCT_PACKAGES += \
+    init.aospa.rc
 
 # SECCOMP Extension
 BOARD_SECCOMP_POLICY += vendor/pa/seccomp
