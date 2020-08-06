@@ -44,4 +44,12 @@
     <alias name="Inter-Light" to="Inter" weight="300" />
     <alias name="Inter-Medium" to="Inter" weight="500" />
 
+    <family customizationType="new-named-family" name="ComicSans">
+        <font weight="400" style="normal">comic.ttf</font>
+        <font weight="400" style="italic">comici.ttf</font>
+        <font weight="700" style="normal">comicbd.ttf</font>
+        <font weight="700" style="italic">comicz.ttf</font>
+    </family>
+    <alias name="ComicSans-Bold" to="ComicSans" weight="700" />
+
 </fonts-modification>
