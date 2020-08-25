@@ -22,23 +22,21 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 # Include Paranoid Android common configuration
 TARGET_BOOT_ANIMATION_RES := 1080
 
-include device/qcom/common/common.mk
-include vendor/pa/config/common_full_phone.mk
-
-# Inherit AOSP device configuration
+# Inherit device configuration
 $(call inherit-product, device/xiaomi/cepheus/msmnile.mk)
 
-# Override AOSP build properties
+# Inherit common PA configuration
+$(call inherit-product, vendor/pa/config/common_full_phone.mk)
+
+# Override build properties
 PRODUCT_NAME := pa_cepheus
 PRODUCT_DEVICE := cepheus
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI 9
 PRODUCT_MANUFACTURER := Xiaomi
 
-BUILD_FINGERPRINT := "Xiaomi/cepheus_eea/cepheus:10/QKQ1.190825.002/V11.0.6.0.QFAEUXM:user/release-keys"
-
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="cepheus-user-10-QKQ1.190825.002-V11.0.6.0.QFAEUXM-release-keys" \
+    PRIVATE_BUILD_DESC="cepheus-user-10-QKQ1.190825.002-V11.0.8.0.QFAEUXM-release-keys" \
     PRODUCT_NAME="cepheus" \
     TARGET_DEVICE="cepheus"
 

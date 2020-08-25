@@ -45,6 +45,17 @@ def indent(elem, level=0):
         if level and (not elem.tail or not elem.tail.strip()):
             elem.tail = i
 
+def recurse_include(manifest):
+    includes = manifest.findall('include')
+    if includes is not None:
+        for file in includes:
+            extra_manifest = ET.parse(extra_manifests_dir + file.get('name')).getroot()
+            for elem in extra_manifest:
+                manifest.append(elem)
+            for elem in recurse_include(extra_manifest):
+                manifest.append(elem)
+    return manifest
+
 if __name__ == '__main__':
     if not os.path.isdir(local_manifests_dir):
         os.mkdir(local_manifests_dir)
@@ -68,12 +79,7 @@ if __name__ == '__main__':
     except (IOError, ET.ParseError):
         upstream_manifest = ET.Element('manifest')
 
-    manifest_includes = upstream_manifest.findall('include')
-    if manifest_includes is not None:
-        for file in manifest_includes:
-            extra_manifest = ET.parse(extra_manifests_dir + file.get('name')).getroot()
-            for project in extra_manifest:
-                upstream_manifest.append(project)
+    recurse_include(upstream_manifest)
 
     try:
         roomservice_manifest = ET.parse(roomservice_manifest_path).getroot()

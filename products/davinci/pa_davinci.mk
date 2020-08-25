@@ -22,13 +22,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 # Include Paranoid Android common configuration
 TARGET_BOOT_ANIMATION_RES := 1080
 
-include device/qcom/common/common.mk
-include vendor/pa/config/common_full_phone.mk
-
-# Inherit AOSP device configuration
+# Inherit device configuration
 $(call inherit-product, device/xiaomi/davinci/device.mk)
 
-# Override AOSP build properties
+# Inherit common PA configuration
+$(call inherit-product, vendor/pa/config/common_full_phone.mk)
+
+# Override build properties
 PRODUCT_NAME := pa_davinci
 PRODUCT_DEVICE := davinci
 PRODUCT_BRAND := Xiaomi
@@ -36,8 +36,6 @@ PRODUCT_MODEL := Mi 9T
 PRODUCT_MANUFACTURER := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
-
-BUILD_FINGERPRINT := "Xiaomi/davinci/davinci:10/QKQ1.190825.002/V11.0.1.0.QFJMIXM:user/release-keys"
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="davinci-user 10 QKQ1.190825.002 V11.0.1.0.QFJMIXM release-keys" \

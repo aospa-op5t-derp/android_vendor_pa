@@ -19,16 +19,15 @@ ifeq (pa_sagit,$(TARGET_PRODUCT))
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# Include Paranoid Android common configuration
 TARGET_BOOT_ANIMATION_RES := 1080
 
-include device/qcom/common/common.mk
-include vendor/pa/config/common_full_phone.mk
-
-# Inherit AOSP device configuration
+# Inherit device configuration
 $(call inherit-product, device/xiaomi/sagit/device.mk)
 
-# Override AOSP build properties
+# Inherit common PA configuration
+$(call inherit-product, vendor/pa/config/common_full_phone.mk)
+
+# Override build properties
 PRODUCT_NAME := pa_sagit
 PRODUCT_DEVICE := sagit
 PRODUCT_BRAND := Xiaomi
@@ -38,6 +37,8 @@ PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=Xiaomi/sagit/sagit:8.0.0/OPR1.170623.027/V9.5.8.0.OCAMIFA:user/release-keys \
-    PRIVATE_BUILD_DESC="sagit-user 8.0.0 OPR1.170623.027 V9.5.8.0.OCAMIFA release-keys"
+    PRIVATE_BUILD_DESC="sagit-user 8.0.0 OPR1.170623.027 V9.2.3.0.OCAMIEK release-keys"
+
+BUILD_FINGERPRINT := Xiaomi/sagit/sagit:8.0.0/OPR1.170623.027/V9.2.3.0.OCAMIEK:user/release-keys
+
 endif

@@ -19,16 +19,15 @@ ifeq (pa_oneplus7pro,$(TARGET_PRODUCT))
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# Include Paranoid Android common configuration
 TARGET_BOOT_ANIMATION_RES := 1440
 
-include device/qcom/common/common.mk
-include vendor/pa/config/common_full_phone.mk
-
-# Inherit AOSP device configuration
+# Inherit device configuration
 $(call inherit-product, device/oneplus/oneplus7pro/device.mk)
 
-# Override AOSP build properties
+# Inherit common PA configuration
+$(call inherit-product, vendor/pa/config/common_full_phone.mk)
+
+# Override build properties
 PRODUCT_NAME := pa_oneplus7pro
 PRODUCT_DEVICE := oneplus7pro
 PRODUCT_BRAND := OnePlus
@@ -41,11 +40,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_DEVICE=OnePlus7Pro \
     PRODUCT_NAME=OnePlus7Pro \
     PRIVATE_BUILD_DESC="OnePlus7Pro-user 10 QKQ1.190716.003 1909131115 release-keys"
-
-BUILD_FINGERPRINT := google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys
-
-# HACK
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.device=OnePlus7Pro
 
 endif

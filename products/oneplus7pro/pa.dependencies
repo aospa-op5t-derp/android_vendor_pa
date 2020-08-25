@@ -12,8 +12,8 @@
         "revision":     "quartz"
     },
     {
-        "remote":       "aospa",
-        "repository":   "AOSPA/android_kernel_oneplus_sm8150",
+        "remote":       "github",
+        "repository":   "arter97/android_kernel_oneplus_sm8150",
         "target_path":  "kernel/oneplus/sm8150",
         "revision":     "quartz"
     },
@@ -21,6 +21,12 @@
         "remote":       "blobs",
         "repository":   "proprietary_vendor_oneplus",
         "target_path":  "vendor/oneplus",
+        "revision":     "quartz"
+    },
+    {
+        "remote":       "aospa",
+        "repository":   "AOSPA/android_device_qcom_common",
+        "target_path":  "device/qcom/common",
         "revision":     "quartz"
     },
     {

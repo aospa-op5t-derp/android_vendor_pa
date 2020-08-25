@@ -1,4 +1,4 @@
-# Copyright (C) 2018 Paranoid Android
+# Copyright (C) 2020 Paranoid Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,23 +19,22 @@ ifeq (pa_polaris,$(TARGET_PRODUCT))
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# Include Paranoid Android common configuration
 TARGET_BOOT_ANIMATION_RES := 1080
 
-include device/qcom/common/common.mk
-include vendor/pa/config/common_full_phone.mk
-
-# Inherit AOSP device configuration
+# Inherit device configuration
 $(call inherit-product, device/xiaomi/polaris/device.mk)
 
-# Override AOSP build properties
+# Inherit common PA configuration
+$(call inherit-product, vendor/pa/config/common_full_phone.mk)
+
+# Override build properties
 PRODUCT_NAME := pa_polaris
 PRODUCT_DEVICE := polaris
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI MIX 2S
 PRODUCT_MANUFACTURER := Xiaomi
 
-PRODUCT_GMS_CLIENTID_BASE := android-xiaomi-rev1
+PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 BUILD_FINGERPRINT := "Xiaomi/polaris/polaris:8.0.0/OPR1.170623.032/V9.5.19.0.ODGMIFA:user/release-keys"
 

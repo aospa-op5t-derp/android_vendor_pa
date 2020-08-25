@@ -1,4 +1,4 @@
-# Copyright (C) 2019 Paranoid Android
+# Copyright (C) 2020 Paranoid Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,92 +12,72 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Paranoid Android packages
+# Abstruct
+PRODUCT_PACKAGES += \
+    Abstruct
+
+# AOSP Packages
+PRODUCT_PACKAGES += \
+    ThemePicker
+
+# Charger Images
+PRODUCT_PACKAGES += \
+    charger_res_images
+
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
+    android.hidl.manager@1.0 \
+    android.hidl.base@1.0.vendor \
+    android.hidl.manager@1.0.vendor
+
+# Neural Network
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full-rtti
+
+# Paranoid Packages
 ifneq ($(TARGET_USES_AOSP_CAMERA),true)
 PRODUCT_PACKAGES += ParanoidCamera
 endif
+
 PRODUCT_PACKAGES += \
-    ChromePublic \
-    SoundRecorder \
-    WallpaperPicker \
-    LatinIME \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    MarkupGoogle \
     Longshot \
-    ParanoidQuickStep \
-    ThemePicker \
-    #ParanoidHub
+    ParanoidPapers \
+    ParanoidQuickStep
 
-# Paranoid Android Overlays
-PRODUCT_PACKAGES += \
-    pa-overlays \
-	ParanoidOverlayStub
+ifneq ($(filter RELEASE BETA,$(PA_BUILDTYPE)),)
+    PRODUCT_PACKAGES += \
+    ParanoidHub
+endif
 
-# Snapdragon apps
+# Face Sense
+TARGET_ENABLE_FACE_SENSE := true
+
 PRODUCT_PACKAGES += \
+    ParanoidFaceSense
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.face.sense_service=$(TARGET_ENABLE_FACE_SENSE)
+
+ifeq ($(TARGET_DISABLES_GAPPS), true)
+PRODUCT_PACKAGES += \
+    ChromeModernPublic \
+    MarkupGoogle \
+    MatchmakerPrebuilt \
     SnapdragonGallery
+endif
 
-# Abstruct
-PRODUCT_PACKAGES += Abstruct
+# QTI VNDK Framework Detect
+PRODUCT_PACKAGES += \
+    libvndfwk_detect_jni.qti \
+    libqti_vndfwk_detect \
+    libvndfwk_detect_jni.qti.vendor \
+    libqti_vndfwk_detect.vendor
 
 # Retro Music Player
-PRODUCT_PACKAGES += RetroMusicPlayer
-
-# Device Personalization Services
-PRODUCT_PACKAGES += MatchmakerPrebuilt
-
-# CAF packages
-# TCP Connection Management
-PRODUCT_PACKAGES += tcmiface
-PRODUCT_BOOT_JARS += tcmiface
-
-# Bluetooth Audio (A2DP)
-PRODUCT_PACKAGES += libbthost_if
-
-# MSIM manual provisioning
-PRODUCT_PACKAGES += telephony-ext
-PRODUCT_BOOT_JARS += telephony-ext
-
-# Extra tools in PA
 PRODUCT_PACKAGES += \
-    7z \
-    awk \
-    bash \
-    bzip2 \
-    curl \
-    getcap \
-    htop \
-    lib7z \
-    libsepol \
-    pigz \
-    powertop \
-    setcap \
-    unrar \
-    unzip \
-    vim \
-    wget \
-    zip
+    RetroMusicPlayer
 
-# Filesystems tools
+# Shell
 PRODUCT_PACKAGES += \
-    fsck.exfat \
-    fsck.ntfs \
-    mke2fs \
-    mkfs.exfat \
-    mkfs.ntfs \
-    mount.ntfs
-
-# Openssh
-PRODUCT_PACKAGES += \
-    scp \
-    sftp \
-    ssh \
-    sshd \
-    sshd_config \
-    ssh-keygen \
-    start-ssh
-
-# rsync
-PRODUCT_PACKAGES += \
-    rsync
+    nano
