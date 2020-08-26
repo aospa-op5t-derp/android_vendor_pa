@@ -196,3 +196,6 @@ endif
 # Wi-Fi
 DISABLE_EAP_PROXY := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
+
+# Lawnchair
+include vendor/lawnchair/lawnchair.mk
