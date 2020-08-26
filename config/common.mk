@@ -212,3 +212,6 @@ DISABLE_EAP_PROXY := true
 
 # Move Wi-Fi modules to vendor
 PRODUCT_VENDOR_MOVE_ENABLED := true
+
+# Lawnchair
+include vendor/lawnchair/lawnchair.mk
