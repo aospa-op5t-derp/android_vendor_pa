@@ -42,7 +42,7 @@ function breakfast()
 		
 		else
 			if [ -z "$variant" ]; then
-				variant="userdebug"
+				variant="user"
 			fi
 
 			lunch "pa_$target-$variant"

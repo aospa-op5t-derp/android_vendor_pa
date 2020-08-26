@@ -15,7 +15,7 @@
 #
 
 ifndef PA_VERSION_FLAVOR
-PA_VERSION_FLAVOR := Quartz
+PA_VERSION_FLAVOR := 10
 endif
 
 ifndef PA_VERSION_CODE
@@ -23,7 +23,7 @@ PA_VERSION_CODE := -
 endif
 
 ifndef PA_BUILDTYPE
-PA_BUILD_VARIANT := Extended
+PA_BUILD_VARIANT := Derp
 else
 ifeq ($(PA_BUILDTYPE), ALPHA)
 PA_BUILD_VARIANT := Alpha
@@ -45,7 +45,7 @@ PA_VERSION := $(shell echo $(PA_VERSION_FLAVOR) | tr A-Z a-z)-$(PA_VERSION_CODE)
 else ifneq ($(filter Alpha Beta,$(PA_BUILD_VARIANT)),)
 PA_VERSION := $(shell echo $(PA_VERSION_FLAVOR) | tr A-Z a-z)-$(shell echo $(PA_BUILD_VARIANT) | tr A-Z a-z)-$(PA_VERSION_CODE)-$(PA_BUILD)-$(BUILD_DATE)
 else
-PA_VERSION := $(shell echo $(PA_VERSION_FLAVOR) | tr A-Z a-z)-$(PA_VERSION_CODE)-$(PA_BUILD)-$(BUILD_DATE)-$(shell echo $(PA_BUILD_VARIANT) | tr A-Z a-z)
+PA_VERSION := $(shell echo $(PA_VERSION_FLAVOR) | tr A-Z a-z)-$(PA_BUILD)-$(BUILD_DATE)-$(shell echo $(PA_BUILD_VARIANT) | tr A-Z a-z)
 endif
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
