@@ -28,4 +28,8 @@
         <permission name="android.permission.MANAGE_VOICE_KEYPHRASES"/>
     </privapp-permissions>
 
+    <privapp-permissions package="org.omnirom.logcat">
+        <permission name="android.permission.READ_LOGS"/>
+    </privapp-permissions>
+
 </permissions>

@@ -42,6 +42,7 @@ endif
 
 PRODUCT_PACKAGES += \
     Longshot \
+    MatLog \
     ParanoidPapers
 
 ifneq ($(filter RELEASE BETA,$(PA_BUILDTYPE)),)
