@@ -137,7 +137,7 @@
     <string name="config_defaultContentSuggestionsService">com.google.android.as/com.google.android.apps.miphone.aiai.app.AiAiContentSuggestionsService</string>
     <string name="config_defaultSystemCaptionsManagerService">com.google.android.as/com.google.android.apps.miphone.aiai.captions.SystemCaptionsManagerService</string>
     <string name="config_defaultSystemCaptionsService">com.google.android.as/com.google.android.apps.miphone.aiai.captions.CaptionsService</string>
-    <string name="config_defaultTextClassifierPackage">com.google.android.as</string>
+    <string name="config_defaultTextClassifierPackage">ch.deletescape.lawnchair.ci:com.google.android.as</string>
 
     <!-- Amount of time in ms the user needs to press the relevant keys to trigger the
          screenshot chord -->
