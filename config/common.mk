@@ -215,3 +215,6 @@ PRODUCT_VENDOR_MOVE_ENABLED := true
 
 # Lawnchair
 include vendor/lawnchair/lawnchair.mk
+
+# Google Customization
+include vendor/google-customization/config.mk
