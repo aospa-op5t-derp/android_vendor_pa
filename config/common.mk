@@ -14,10 +14,8 @@
 
 # ADB
 ifeq ($(TARGET_BUILD_VARIANT),user)
-# Enable ADB authentication
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=1
 else
-# Disable ADB authentication
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=0
 PRODUCT_PACKAGES += \
     adb_root
@@ -28,7 +26,6 @@ PRODUCT_COPY_FILES += \
     vendor/pa/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.nfc.beam.xml
 
 # ART
-# Optimize everything for preopt
 PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := everything
 
 # Backup Tool
@@ -45,7 +42,6 @@ PRODUCT_COPY_FILES += \
 endif
 
 # Bluetooth
-# Disable AAC whitelist
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.vendor.bt.a2dp.aac_whitelist=false
 
 # Boot Animation
@@ -154,11 +150,9 @@ endif
 
 # QCOM
 include vendor/pa/config/qcom_utils.mk
-# Include Common Qualcomm Device Tree on Qualcomm Boards
 $(call inherit-product-if-exists, device/qcom/common/common.mk)
 
 # Ramdisk
-# Copy all pa-specific init rc files
 $(foreach f,$(wildcard vendor/pa/prebuilt/etc/init/*.rc),\
     $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $f)))
 
@@ -183,7 +177,6 @@ $(warning **********************************************)
 sdclang_already_warned := true
 endif
 else
-# include definitions for SDCLANG
 include vendor/pa/sdclang/sdclang.mk
 endif
 
@@ -192,23 +185,14 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.config.alarm_alert=Bright_morning.ogg \
     ro.config.notification_sound=End_note.ogg
 
-# Strip the local variable table and the local variable type table to reduce
-# the size of the system image. This has no bearing on stack traces, but will
-# leave less information available via JDWP.
+# Debug Stripping
 PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 
 # Treble
-# Enable ALLOW_MISSING_DEPENDENCIES on Vendorless Builds
 ifeq ($(BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE),)
   ALLOW_MISSING_DEPENDENCIES := true
 endif
 
-
 # Wi-Fi
-
-# Disable EAP Proxy because it depends on proprietary headers
-# and breaks WPA Supplicant compilation.
 DISABLE_EAP_PROXY := true
-
-# Move Wi-Fi modules to vendor
 PRODUCT_VENDOR_MOVE_ENABLED := true

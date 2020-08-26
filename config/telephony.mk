@@ -42,6 +42,5 @@ PRODUCT_PACKAGES += \
     CellBroadcastReceiver
 
 # Tethering
-# Allow without requiring a provisioning app (for devices that check this)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     net.tethering.noprovisioning=true
