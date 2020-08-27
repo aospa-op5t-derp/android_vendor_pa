@@ -67,7 +67,7 @@ ifneq ($(filter Release,$(PA_BUILD_VARIANT)),)
 else ifneq ($(filter Alpha Beta,$(PA_BUILD_VARIANT)),)
   PA_VERSION := $(shell echo $(PA_VERSION_FLAVOR) | tr A-Z a-z)-$(shell echo $(PA_BUILD_VARIANT) | tr A-Z a-z)-$(PA_VERSION_CODE)-$(PA_BUILD)-$(BUILD_DATE)
 else
-  PA_VERSION := $(shell echo $(PA_VERSION_FLAVOR) | tr A-Z a-z)-$(PA_VERSION_CODE)-$(PA_BUILD)-$(BUILD_DATE)-$(shell echo $(PA_BUILD_VARIANT) | tr A-Z a-z)
+  PA_VERSION := $(shell echo $(PA_VERSION_FLAVOR) | tr A-Z a-z)-$(PA_BUILD)-$(BUILD_DATE)-$(shell echo $(PA_BUILD_VARIANT) | tr A-Z a-z)
 endif
 
 # Paranoid Android System Version
