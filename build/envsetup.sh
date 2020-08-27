@@ -41,7 +41,7 @@ function breakfast()
         else
             # This is probably just the AOSPA model name
             if [ -z "$variant" ]; then
-                variant="userdebug"
+                variant="user"
             fi
 
             lunch pa_$target-$variant
